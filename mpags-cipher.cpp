@@ -34,10 +34,11 @@ int main(int argc, char* argv[]) {
     // Take each letter from user input:
     char in_char('x');
     if (hflag == 0) {
+        std::string u_char{};
     while(std::cin >> in_char) {
         // Take in_char and converts it to upper case
         // Change numbers to letters
-        char u_char{'o'};
+        
         std::string num{""};
         if (isalpha(in_char) == 0){
         switch(in_char) {
@@ -73,12 +74,13 @@ int main(int argc, char* argv[]) {
             default:
             break;
         }
-        std::cout << num << std::endl;
+        u_char += num;
         } else {
-            u_char = toupper(in_char);
-            std::cout << u_char <<std::endl;
+            u_char += toupper(in_char);
+            
         }
     }
+    std::cout << u_char <<std::endl;
     }
 
 }
