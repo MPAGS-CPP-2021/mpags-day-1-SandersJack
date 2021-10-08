@@ -6,11 +6,25 @@
 int main(int argc, char* argv[]) {
 
     const std::vector<std::string> cmdLineArgs { argv, argv+argc};
+    char hflag{0};
     for (int i{0}; i<argc; i++) {
+        std::string check{cmdLineArgs[i]};
+            if (check == "-h") {
+                hflag = 1; // Kills th program if asked for help
+                std::cout << "Usage: ./mpags-cipher [options] file .." <<std::endl;
+                std::cout << "Options:" << std::endl;
+                std::cout << "  --help    Display this information" <<std::endl;
+            } else if (check == "--help") {
+                hflag = 1;
+                std::cout << "Usage: ./mpags-cipher [options] file .." <<std::endl;
+                std::cout << "Options:" << std::endl;
+                std::cout << "  --help    Display this information" <<std::endl; 
+            }
         std::cout << cmdLineArgs[i] << std::endl;
     }
     // Take each letter from user input:
     char in_char('x');
+    if (hflag == 0) {
     while(std::cin >> in_char) {
         // Take in_char and converts it to upper case
         // Change numbers to letters
@@ -56,6 +70,6 @@ int main(int argc, char* argv[]) {
             std::cout << u_char <<std::endl;
         }
     }
-
+    }
 
 }
