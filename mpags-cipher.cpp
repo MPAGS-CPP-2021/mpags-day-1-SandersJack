@@ -1,28 +1,55 @@
 #include <iostream>
 #include <string>
-int main() {
-    /* Getting Experience
-     Author: Jack Sanders
-     File created: 08/10/21 */
-    int a{4};
-    int b{11};
-    const double d{0.7};
-    std::string msg{"a is a int and d is a double"};
-    std::string text{"Good Morning"};
-    char fix = text[5];
-    a = 70;
-    std::cout << fix << std::endl;
-    std::cout << a << std::endl;
-    std::cout << d << std::endl;
-    std::cout << a*d << std::endl;
-    std::cout << d/a << std::endl;
-    std::cout << a/b << std::endl;
-    /* Dividing an int by and int produces an int but 
-    if it produces a decimal value it rounds to a int */
-    std::cout << msg << std::endl;
-    /* error from adding d=9.0:
-    mpags-cipher.cpp: In function ‘int main()’:
-    mpags-cipher.cpp:9:9: error: assignment of read-only variable ‘d’
-     d = 9.0; */
-    return 0;
+#include <vector>
+#include <ctype.h>
+
+int main(int argc, char* argv[]) {
+
+    // Take each letter from user input:
+    char in_char('x');
+    while(std::cin >> in_char) {
+        // Take in_char and converts it to upper case
+        // Change numbers to letters
+        char u_char{};
+        if (isalpha(in_char) > 0){
+        switch(in_char) {
+            case '0':
+            u_char = 'A';
+            break;
+            case '1':
+            u_char = 'B';
+            break;
+            case '2':
+            u_char = 'C';
+            break;
+            case '3':
+            u_char = 'D';
+            break;
+            case '4':
+            u_char = 'E';
+            break;
+            case '5':
+            u_char = 'F';
+            break;
+            case '6':
+            u_char = 'G';
+            break;
+            case '7':
+            u_char = 'H';
+            break;
+            case '8':
+            u_char = 'I';
+            break;
+            case '9':
+            u_char = 'J';
+            default:
+            u_char = toupper(in_char);
+            break;
+        }
+        std::cout << u_char <<std::endl;
+        }
+        
+    }
+
+
 }
