@@ -7,13 +7,16 @@
 int main(int argc, char* argv[]) {
 
     const std::vector<std::string> cmdLineArgs { argv, argv+argc};
+    // Used for checking if flags have been used
     char hflag{0};
     char iflag{0};
     char oflag{0};
     char check_iflag{0};
     char check_oflag{0};
+    // Intialising file name strings
     std::string i_filename{};
     std::string o_filename{};
+    // Intialising size of strings
     int i_size{};
     int o_size{};
     for (int i{0}; i<argc; i++) {
@@ -22,12 +25,18 @@ int main(int argc, char* argv[]) {
                 hflag = 1; // Kills th program if asked for help
                 std::cout << "Usage: ./mpags-cipher [options] file .." <<std::endl;
                 std::cout << "Options:" << std::endl;
+                std::cout << "  -i    Set input file" <<std::endl;
+                std::cout << "  -o    Set output file " <<std::endl;
+                std::cout << "  --version    Display the code version" <<std::endl;
                 std::cout << "  --help    Display this information" <<std::endl;
             } else if (check == "--help") {
                 hflag = 1;
                 std::cout << "Usage: ./mpags-cipher [options] file .." <<std::endl;
                 std::cout << "Options:" << std::endl;
-                std::cout << "  --help    Display this information" <<std::endl; 
+                std::cout << "  -i    Set input file" <<std::endl;
+                std::cout << "  -o    Set output file " <<std::endl;
+                std::cout << "  --version    Display the code version" <<std::endl;
+                std::cout << "  -h    Display this information" <<std::endl; 
             } else if (check == "--version") {
                 std::cout << "mpags-cipher version 0.1.0" << std::endl;
             } else if (cmdLineArgs[i-1] == "-i") {
