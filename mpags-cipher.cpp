@@ -7,6 +7,8 @@ int main(int argc, char* argv[]) {
 
     const std::vector<std::string> cmdLineArgs { argv, argv+argc};
     char hflag{0};
+    std::string i_filename{};
+    std::string o_filename{};
     for (int i{0}; i<argc; i++) {
         std::string check{cmdLineArgs[i]};
             if (check == "-h") {
@@ -19,8 +21,15 @@ int main(int argc, char* argv[]) {
                 std::cout << "Usage: ./mpags-cipher [options] file .." <<std::endl;
                 std::cout << "Options:" << std::endl;
                 std::cout << "  --help    Display this information" <<std::endl; 
+            } else if (check == "--version") {
+                std::cout << "mpags-cipher version 0.1.0" << std::endl;
+            } else if (cmdLineArgs[i-1] == "-i") {
+                i_filename =  check;
+            } else if (cmdLineArgs[i-1] == "-o") {
+                o_filename =  check;
             }
-        std::cout << cmdLineArgs[i] << std::endl;
+            
+        //std::cout << cmdLineArgs[i] << std::endl;
     }
     // Take each letter from user input:
     char in_char('x');
