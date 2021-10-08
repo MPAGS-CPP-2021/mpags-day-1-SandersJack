@@ -12,4 +12,5 @@ int main() {
      /* Doing int e{d}; produces error:
         warning: narrowing conversion of ‘d’ from ‘double’ to ‘int’ inside { } [-Wnarrowing]
       int e{d}; */
+    return 0;
 }
