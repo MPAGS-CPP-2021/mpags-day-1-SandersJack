@@ -19,11 +19,14 @@ int main(int argc, char* argv[]) {
     // Intialising size of strings
     int i_size{};
     int o_size{};
+
+    // Checking for termianl inputs
     for (int i{0}; i<argc; i++) {
         std::string check{cmdLineArgs[i]};
             if (check == "-h") {
                 hflag = 1; // Kills th program if asked for help
                 std::cout << "Usage: ./mpags-cipher [options] file .." <<std::endl;
+                std::cout << "To end and get final string: CTRL+D" <<std::endl;
                 std::cout << "Options:" << std::endl;
                 std::cout << "  -i    Set input file" <<std::endl;
                 std::cout << "  -o    Set output file " <<std::endl;
@@ -32,6 +35,7 @@ int main(int argc, char* argv[]) {
             } else if (check == "--help") {
                 hflag = 1;
                 std::cout << "Usage: ./mpags-cipher [options] file .." <<std::endl;
+                std::cout << "To end and get final string: CTRL+D" <<std::endl;
                 std::cout << "Options:" << std::endl;
                 std::cout << "  -i    Set input file" <<std::endl;
                 std::cout << "  -o    Set output file " <<std::endl;
@@ -42,19 +46,21 @@ int main(int argc, char* argv[]) {
             } else if (cmdLineArgs[i-1] == "-i") {
                 i_filename =  check;
                 i_size = i_filename.size();
+                // Checks if input file is in .txt format
                 if (i_filename[i_size-1] == 't' && i_filename[i_size-2] == 'x' && i_filename[i_size-3] == 't' && i_filename[i_size-4] == '.' ){
                     iflag = 1;
                 } else {
-                    check_iflag = 1;
+                    check_iflag = 1; //Flag to see if this output has been shown
                     std::cout << "Wrong input file format, needs to be .txt" <<std::endl;
                 }
             } else if (cmdLineArgs[i-1] == "-o") {
                 o_filename =  check;
                 o_size = o_filename.size();
+                // Checks if output file is in .txt format
                 if (o_filename[o_size-1] == 't' && o_filename[o_size-2] == 'x' && o_filename[o_size-3] == 't' && o_filename[o_size-4] == '.' ){
-                oflag = 1;
+                    oflag = 1;
             } else {
-                check_oflag = 1;
+                check_oflag = 1; //Flag to see if this output has been shown
                 std::cout << "Wrong output file format, needs to be .txt" <<std::endl;
             }
             }
@@ -62,61 +68,65 @@ int main(int argc, char* argv[]) {
             
         //std::cout << cmdLineArgs[i] << std::endl;
     }
+
+    //Print outs if either the input or output file was declared
     if (oflag == 0 && check_oflag == 0) {
         std::cout << "No declared output file!" << std::endl;
     } else if (iflag == 0 && check_iflag == 0) {
         std::cout << "No declared Input file!" << std::endl;
     }
-    // Take each letter from user input:
+ 
     char in_char('x');
+    // Checks if setup is complete inorder to run the main code
     if (hflag == 0 && iflag ==1 && oflag ==1) {
         std::string u_char{};
-    while(std::cin >> in_char) {
-        // Take in_char and converts it to upper case
-        // Change numbers to letters
-        
-        std::string num{""};
-        if (isalpha(in_char) == 0){
-        switch(in_char) {
-            case '0':
-            num = "ZERO";
-            break;
-            case '1':
-            num = "ONE";
-            break;
-            case '2':
-            num = "TWO";
-            break;
-            case '3':
-            num = "THREE";
-            break;
-            case '4':
-            num = "FOUR";
-            break;
-            case '5':
-            num = "FIVE";
-            break;
-            case '6':
-            num = "SIX";
-            break;
-            case '7':
-            num = "SEVEN";
-            break;
-            case '8':
-            num = "EIGHT";
-            break;
-            case '9':
-            num = "NINE";
-            default:
-            break;
-        }
-        u_char += num;
-        } else {
-            u_char += toupper(in_char);
+        // Setup for taking in keyboard inputs
+        while(std::cin >> in_char) {
             
+            std::string num{""};
+            // Checks if input is a Alphabet character
+            if (isalpha(in_char) == 0){ // If not alpha
+                // Change numbers to letters
+                switch(in_char) {
+                    case '0':
+                    num = "ZERO";
+                    break;
+                    case '1':
+                    num = "ONE";
+                    break;
+                    case '2':
+                    num = "TWO";
+                    break;
+                    case '3':
+                    num = "THREE";
+                    break;
+                    case '4':
+                    num = "FOUR";
+                    break;
+                    case '5':
+                    num = "FIVE";
+                    break;
+                    case '6':
+                    num = "SIX";
+                    break;
+                    case '7':
+                    num = "SEVEN";
+                    break;
+                    case '8':
+                    num = "EIGHT";
+                    break;
+                    case '9':
+                    num = "NINE";
+                    default:
+                    break;
+                }
+                u_char += num;
+                } else { // If alpha 
+                    u_char += toupper(in_char); //Converts to Uppercase
+                    
+                }
         }
-    }
-    std::cout << u_char <<std::endl;
+        std::cout << u_char <<std::endl; //Prints out final string
     }
 
 }
