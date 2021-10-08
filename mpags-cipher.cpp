@@ -5,6 +5,10 @@
 
 int main(int argc, char* argv[]) {
 
+    const std::vector<std::string> cmdLineArgs { argv, argv+argc};
+    for (int i{0}; i<cmdLineArgs.size(); i++) {
+        std::cout << cmdLineArgs[i] << std::endl;
+    }
     // Take each letter from user input:
     char in_char('x');
     while(std::cin >> in_char) {
