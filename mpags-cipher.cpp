@@ -14,45 +14,47 @@ int main(int argc, char* argv[]) {
     while(std::cin >> in_char) {
         // Take in_char and converts it to upper case
         // Change numbers to letters
-        char u_char{};
-        if (isalpha(in_char) > 0){
+        char u_char{'o'};
+        std::string num{""};
+        if (isalpha(in_char) == 0){
         switch(in_char) {
             case '0':
-            u_char = 'A';
+            num = "ZERO";
             break;
             case '1':
-            u_char = 'B';
+            num = "ONE";
             break;
             case '2':
-            u_char = 'C';
+            num = "TWO";
             break;
             case '3':
-            u_char = 'D';
+            num = "THREE";
             break;
             case '4':
-            u_char = 'E';
+            num = "FOUR";
             break;
             case '5':
-            u_char = 'F';
+            num = "FIVE";
             break;
             case '6':
-            u_char = 'G';
+            num = "SIX";
             break;
             case '7':
-            u_char = 'H';
+            num = "SEVEN";
             break;
             case '8':
-            u_char = 'I';
+            num = "EIGHT";
             break;
             case '9':
-            u_char = 'J';
+            num = "NINE";
             default:
-            u_char = toupper(in_char);
             break;
         }
-        std::cout << u_char <<std::endl;
+        std::cout << num << std::endl;
+        } else {
+            u_char = toupper(in_char);
+            std::cout << u_char <<std::endl;
         }
-        
     }
 
 
